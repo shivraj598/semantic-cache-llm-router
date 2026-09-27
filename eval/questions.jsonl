@@ -5,7 +5,7 @@
 {"id": "q05", "question": "What does the Python Software Foundation do?", "reference": "The PSF is the nonprofit that maintains Python's intellectual property and supports the community.", "source_doc": "Python Software Foundation"}
 {"id": "q06", "question": "What is PyPI?", "reference": "PyPI, the Python Package Index, is the official repository for third-party Python packages.", "source_doc": "Python Package Index"}
 {"id": "q07", "question": "What does pip do?", "reference": "pip installs and manages Python packages from PyPI.", "source_doc": "pip (package manager)"}
-{"id": "q08", "question": "What is virtualenv for?", "reference": "virtualenv creates isolated Python environments with their own packages.", "source_doc": "virtualenv"}
+{"id": "q08", "question": "What is IPython?", "reference": "IPython is an interactive Python shell with tab completion and rich media support.", "source_doc": "IPython"}
 {"id": "q09", "question": "What is Conda?", "reference": "Conda is a cross-language package and environment manager popular in data science.", "source_doc": "Conda (package manager)"}
 {"id": "q10", "question": "What is a Jupyter Notebook?", "reference": "Jupyter Notebook is an interactive document mixing code, output and markdown, common for data work.", "source_doc": "Jupyter Notebook"}
 {"id": "q11", "question": "What is NumPy used for?", "reference": "NumPy provides n-dimensional arrays and fast numerical operations in Python.", "source_doc": "NumPy"}
@@ -22,7 +22,7 @@
 {"id": "q22", "question": "What is Flask?", "reference": "Flask is a lightweight Python micro web framework.", "source_doc": "Flask (web framework)"}
 {"id": "q23", "question": "What is Django?", "reference": "Django is a batteries-included Python web framework with ORM, admin and auth.", "source_doc": "Django (web framework)"}
 {"id": "q24", "question": "What is SQLAlchemy?", "reference": "SQLAlchemy is Python's SQL toolkit and ORM for database access.", "source_doc": "SQLAlchemy"}
-{"id": "q25", "question": "What is Pydantic for?", "reference": "Pydantic validates data using Python type annotations; FastAPI uses it for request models.", "source_doc": "Pydantic"}
+{"id": "q25", "question": "What is Mypy?", "reference": "Mypy is a static type checker for Python.", "source_doc": "Mypy"}
 {"id": "q26", "question": "What is Uvicorn?", "reference": "Uvicorn is an ASGI server commonly used to run FastAPI and Starlette apps.", "source_doc": "Uvicorn"}
 {"id": "q27", "question": "What is Starlette?", "reference": "Starlette is a lightweight ASGI framework that FastAPI is built on.", "source_doc": "Starlette"}
 {"id": "q28", "question": "What is the Requests library?", "reference": "Requests is a Python HTTP library for sending requests simply.", "source_doc": "Requests (software)"}
@@ -46,5 +46,5 @@
 {"id": "q46", "question": "What is pytest?", "reference": "pytest is a Python testing framework with simple asserts and fixtures.", "source_doc": "pytest"}
 {"id": "q47", "question": "What is Git?", "reference": "Git is a distributed version control system tracking code history.", "source_doc": "Git"}
 {"id": "q48", "question": "What is GitHub?", "reference": "GitHub hosts Git repositories with pull requests, issues and CI.", "source_doc": "GitHub"}
-{"id": "q49", "question": "What is asyncio?", "reference": "asyncio is Python's library for async I/O with event loops and coroutines.", "source_doc": "Asyncio"}
+{"id": "q49", "question": "What is a coroutine?", "reference": "A coroutine is a function that can pause and resume execution, used for async programming.", "source_doc": "Coroutine"}
 {"id": "q50", "question": "What is an API?", "reference": "An API is a contract letting software components communicate.", "source_doc": "Application programming interface"}

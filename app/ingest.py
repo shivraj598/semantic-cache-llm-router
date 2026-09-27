@@ -26,12 +26,12 @@ TITLES = [
     "TensorFlow", "PyTorch", "Keras", "OpenCV", "Natural Language Toolkit",
     "FastAPI", "Flask (web framework)", "Django (web framework)", "SQLAlchemy",
     "Pydantic", "Uvicorn", "Starlette", "Requests (software)",
-    "Hypertext Transfer Protocol", "Representational state transfer", "JSON",
+    "HTTP", "Representational state transfer", "JSON",
     "WebSocket", "Docker (software)", "Kubernetes", "PostgreSQL", "SQLite",
     "Redis", "Vector database", "Embedding", "Transformer (deep learning architecture)",
     "Large language model", "Retrieval-augmented generation", "Prompt engineering",
     "Fine-tuning (deep learning)", "Global interpreter lock", "pytest",
-    "Git", "GitHub", "Asyncio",     "Decorator (computer science)",
+    "Git", "GitHub", "Asyncio", "Decorator pattern",
     "Generator (computer programming)", "List (abstract data type)", "Hash table",
     "Regular expression", "Unit testing", "Continuous integration",
     "Application programming interface", "Microservices", "Virtual machine",
@@ -54,7 +54,7 @@ def fetch_article(title: str, retries: int = 4) -> str | None:
     for attempt in range(retries):
         try:
             r = httpx.get(API, headers=HEADERS, params={"action": "query", "prop": "extracts",
-                                       "explaintext": True, "titles": title,
+                                       "explaintext": True, "redirects": 1, "titles": title,
                                        "format": "json"}, timeout=30)
             r.raise_for_status()
             pages = r.json()["query"]["pages"]
@@ -118,7 +118,7 @@ def main(limit: int = 60, rebuild: bool = False) -> None:
         if title in have:
             continue
         text = fetch_article(title)
-        time.sleep(1.0)  # be nice to the Wikipedia API
+        time.sleep(2.0)  # be nice to the Wikipedia API
         if not text:
             print(f"skip (missing/empty): {title}")
             continue

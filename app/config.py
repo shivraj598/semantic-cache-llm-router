@@ -32,10 +32,15 @@ GROQ_API_KEY: str | None = os.getenv("GROQ_API_KEY") or None
 
 
 def api_key_for(model: str) -> str | None:
-    """Pick the right key per provider prefix (groq/ vs OpenAI-compatible)."""
+    """Pick the right key per provider prefix.
+
+    groq/ models use GROQ_API_KEY; everything else uses OPENAI_API_KEY,
+    falling back to GROQ_API_KEY so the OpenAI-compatible Groq endpoint
+    (OPENAI_BASE_URL=https://api.groq.com/openai/v1) works with one key.
+    """
     if model.startswith("groq/"):
         return GROQ_API_KEY
-    return OPENAI_API_KEY
+    return OPENAI_API_KEY or GROQ_API_KEY
 
 
 def extra_kwargs_for(model: str) -> dict:

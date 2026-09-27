@@ -32,28 +32,32 @@ def keyword_score(reference: str, answer: str) -> float:
     return round(len(r & a) / len(r), 3)
 
 
-def llm_judge(question: str, reference: str, answer: str) -> float | None:
-    try:
-        import litellm
-        from app import config
-        if not config.api_key_for(config.MODEL_SMALL):
-            return None
-        kwargs: dict = {
-            "model": config.MODEL_SMALL,
-            "messages": [{
-                "role": "user",
-                "content": ("Rate answer correctness 0..1 (number only).\n"
-                            f"Q: {question}\nReference: {reference}\nAnswer: {answer}")}],
-        }
-        kwargs.update(config.extra_kwargs_for(config.MODEL_SMALL))
-        key = config.api_key_for(config.MODEL_SMALL)
-        if key:
-            kwargs["api_key"] = key
-        out = litellm.completion(**kwargs)["choices"][0]["message"]["content"].strip()
-        m = re.search(r"0?\.\d+|\b[01]\b", out)
-        return max(0.0, min(1.0, float(m.group()))) if m else None
-    except Exception:
+def llm_judge(question: str, reference: str, answer: str, retries: int = 3) -> float | None:
+    import time
+
+    import litellm
+    from app import config
+    if not config.api_key_for(config.MODEL_SMALL):
         return None
+    kwargs: dict = {
+        "model": config.MODEL_SMALL,
+        "messages": [{
+            "role": "user",
+            "content": ("Rate answer correctness 0..1 (number only).\n"
+                        f"Q: {question}\nReference: {reference}\nAnswer: {answer}")}],
+    }
+    kwargs.update(config.extra_kwargs_for(config.MODEL_SMALL))
+    key = config.api_key_for(config.MODEL_SMALL)
+    if key:
+        kwargs["api_key"] = key
+    for attempt in range(retries):
+        try:
+            out = litellm.completion(**kwargs)["choices"][0]["message"]["content"].strip()
+            m = re.search(r"0?\.\d+|\b[01]\b", out)
+            return max(0.0, min(1.0, float(m.group()))) if m else None
+        except Exception:
+            time.sleep(2 ** attempt)
+    return None
 
 
 def main(out: str = "eval/results/baseline.csv") -> None:

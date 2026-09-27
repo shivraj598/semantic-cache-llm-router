@@ -11,7 +11,7 @@ import uuid
 
 import httpx
 from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, VectorParams
+from qdrant_client.models import Distance, PointStruct, VectorParams
 from sentence_transformers import SentenceTransformer
 
 from app import config
@@ -106,12 +106,12 @@ def main(limit: int = 60, rebuild: bool = False) -> None:
         if not chunks:
             continue
         vecs = model.encode(chunks, show_progress_bar=False).tolist()
-        points = [{
-            "id": uuid.uuid4().hex,
-            "vector": v,
-            "payload": {"doc_title": title, "text": c,
-                        "corpus_version": config.CORPUS_VERSION},
-        } for v, c in zip(vecs, chunks)]
+        points = [PointStruct(
+            id=uuid.uuid4().hex,
+            vector=v,
+            payload={"doc_title": title, "text": c,
+                     "corpus_version": config.CORPUS_VERSION},
+        ) for v, c in zip(vecs, chunks)]
         client.upsert(config.RAG_COLLECTION, points=points)
         stored_docs += 1
         stored_chunks += len(points)

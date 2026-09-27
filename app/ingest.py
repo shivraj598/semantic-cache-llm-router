@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import time
 import uuid
 
 import httpx
@@ -30,8 +31,8 @@ TITLES = [
     "Redis", "Vector database", "Embedding", "Transformer (deep learning architecture)",
     "Large language model", "Retrieval-augmented generation", "Prompt engineering",
     "Fine-tuning (deep learning)", "Global interpreter lock", "pytest",
-    "Git", "GitHub", "Asyncio", "Decorator (computer science)",
-    "Generator (computer programming)", "List (computer science)", "Hash table",
+    "Git", "GitHub", "Asyncio",     "Decorator (computer science)",
+    "Generator (computer programming)", "List (abstract data type)", "Hash table",
     "Regular expression", "Unit testing", "Continuous integration",
     "Application programming interface", "Microservices", "Virtual machine",
     "Cloud computing",
@@ -49,20 +50,22 @@ def get_model() -> SentenceTransformer:
     return _model
 
 
-def fetch_article(title: str) -> str | None:
-    try:
-        r = httpx.get(API, headers=HEADERS, params={"action": "query", "prop": "extracts",
-                                   "explaintext": True, "titles": title,
-                                   "format": "json"}, timeout=30)
-        r.raise_for_status()
-        pages = r.json()["query"]["pages"]
-        for page in pages.values():
-            if "missing" in page:
-                return None
-            return page.get("extract", "")
-    except Exception as e:
-        print(f"skip {title}: {e}")
-        return None
+def fetch_article(title: str, retries: int = 4) -> str | None:
+    for attempt in range(retries):
+        try:
+            r = httpx.get(API, headers=HEADERS, params={"action": "query", "prop": "extracts",
+                                       "explaintext": True, "titles": title,
+                                       "format": "json"}, timeout=30)
+            r.raise_for_status()
+            pages = r.json()["query"]["pages"]
+            for page in pages.values():
+                if "missing" in page:
+                    return None
+                return page.get("extract", "")
+        except Exception as e:
+            wait = 2 ** attempt
+            print(f"retry {title} ({e}), sleeping {wait}s")
+            time.sleep(wait)
     return None
 
 
@@ -87,6 +90,19 @@ def get_client() -> QdrantClient:
     return client
 
 
+def existing_titles(client: QdrantClient) -> set[str]:
+    out: set[str] = set()
+    off = None
+    while True:
+        pts, off = client.scroll(config.RAG_COLLECTION, limit=500,
+                                 offset=off, with_payload=True, with_vectors=False)
+        for p in pts:
+            out.add((p.payload or {}).get("doc_title", ""))
+        if off is None:
+            break
+    return out
+
+
 def main(limit: int = 60, rebuild: bool = False) -> None:
     client = get_client()
     if rebuild:
@@ -96,9 +112,13 @@ def main(limit: int = 60, rebuild: bool = False) -> None:
             vectors_config=VectorParams(size=config.EMBED_DIM, distance=Distance.COSINE),
         )
     model = get_model()
+    have = set() if rebuild else existing_titles(client)
     stored_docs, stored_chunks = 0, 0
     for title in TITLES[:limit]:
+        if title in have:
+            continue
         text = fetch_article(title)
+        time.sleep(1.0)  # be nice to the Wikipedia API
         if not text:
             print(f"skip (missing/empty): {title}")
             continue

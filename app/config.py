@@ -28,6 +28,21 @@ MODEL_SMALL: str = os.getenv("MODEL_SMALL", "gpt-4o-mini")
 MODEL_LARGE: str = os.getenv("MODEL_LARGE", "gpt-4o")
 OPENAI_BASE_URL: str | None = os.getenv("OPENAI_BASE_URL") or None
 OPENAI_API_KEY: str | None = os.getenv("OPENAI_API_KEY") or None
+GROQ_API_KEY: str | None = os.getenv("GROQ_API_KEY") or None
+
+
+def api_key_for(model: str) -> str | None:
+    """Pick the right key per provider prefix (groq/ vs OpenAI-compatible)."""
+    if model.startswith("groq/"):
+        return GROQ_API_KEY
+    return OPENAI_API_KEY
+
+
+def extra_kwargs_for(model: str) -> dict:
+    """Provider-specific LiteLLM kwargs (base URL only for generic OpenAI)."""
+    if model.startswith("groq/"):
+        return {}
+    return {"api_base": OPENAI_BASE_URL} if OPENAI_BASE_URL else {}
 
 # Price table USD per 1M tokens (override per provider via env).
 PRICE_SMALL_IN_PER_1M: float = float(os.getenv("PRICE_SMALL_IN_PER_1M", "0.15"))

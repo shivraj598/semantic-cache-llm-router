@@ -4,6 +4,7 @@ uvicorn[standard]
 qdrant-client
 sentence-transformers
 litellm
+groq
 psycopg[binary]
 sqlalchemy
 python-dotenv

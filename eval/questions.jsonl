@@ -1,0 +1,50 @@
+{"id": "q01", "question": "What is Python and who created it?", "reference": "Python is a high-level programming language created by Guido van Rossum.", "source_doc": "Python (programming language)"}
+{"id": "q02", "question": "What is CPython?", "reference": "CPython is the default reference implementation of Python written in C.", "source_doc": "CPython"}
+{"id": "q03", "question": "How does PyPy differ from CPython?", "reference": "PyPy is a Python implementation with a just-in-time compiler, often faster than CPython.", "source_doc": "PyPy"}
+{"id": "q04", "question": "What is Cython used for?", "reference": "Cython compiles Python-like code to C for speed, often used to wrap C libraries.", "source_doc": "Cython"}
+{"id": "q05", "question": "What does the Python Software Foundation do?", "reference": "The PSF is the nonprofit that maintains Python's intellectual property and supports the community.", "source_doc": "Python Software Foundation"}
+{"id": "q06", "question": "What is PyPI?", "reference": "PyPI, the Python Package Index, is the official repository for third-party Python packages.", "source_doc": "Python Package Index"}
+{"id": "q07", "question": "What does pip do?", "reference": "pip installs and manages Python packages from PyPI.", "source_doc": "pip (package manager)"}
+{"id": "q08", "question": "What is virtualenv for?", "reference": "virtualenv creates isolated Python environments with their own packages.", "source_doc": "virtualenv"}
+{"id": "q09", "question": "What is Conda?", "reference": "Conda is a cross-language package and environment manager popular in data science.", "source_doc": "Conda (package manager)"}
+{"id": "q10", "question": "What is a Jupyter Notebook?", "reference": "Jupyter Notebook is an interactive document mixing code, output and markdown, common for data work.", "source_doc": "Jupyter Notebook"}
+{"id": "q11", "question": "What is NumPy used for?", "reference": "NumPy provides n-dimensional arrays and fast numerical operations in Python.", "source_doc": "NumPy"}
+{"id": "q12", "question": "What does pandas provide?", "reference": "pandas provides DataFrames for tabular data manipulation and analysis.", "source_doc": "pandas (software)"}
+{"id": "q13", "question": "What is SciPy?", "reference": "SciPy builds on NumPy with modules for optimization, integration, statistics and signal processing.", "source_doc": "SciPy"}
+{"id": "q14", "question": "What is scikit-learn?", "reference": "scikit-learn is a Python library for classical machine learning like classification and clustering.", "source_doc": "scikit-learn"}
+{"id": "q15", "question": "What is Matplotlib?", "reference": "Matplotlib is Python's standard 2D plotting library.", "source_doc": "Matplotlib"}
+{"id": "q16", "question": "What is TensorFlow?", "reference": "TensorFlow is Google's framework for building and training neural networks.", "source_doc": "TensorFlow"}
+{"id": "q17", "question": "What is PyTorch?", "reference": "PyTorch is Meta's deep learning framework known for dynamic computation graphs.", "source_doc": "PyTorch"}
+{"id": "q18", "question": "What is Keras?", "reference": "Keras is a high-level neural network API that runs on top of frameworks like TensorFlow.", "source_doc": "Keras"}
+{"id": "q19", "question": "What is OpenCV used for?", "reference": "OpenCV is a library for computer vision tasks like image and video processing.", "source_doc": "OpenCV"}
+{"id": "q20", "question": "What is NLTK?", "reference": "NLTK is a Python toolkit for natural language processing with corpora and models.", "source_doc": "Natural Language Toolkit"}
+{"id": "q21", "question": "What is FastAPI?", "reference": "FastAPI is a modern Python web framework for building APIs with type hints and async support.", "source_doc": "FastAPI"}
+{"id": "q22", "question": "What is Flask?", "reference": "Flask is a lightweight Python micro web framework.", "source_doc": "Flask (web framework)"}
+{"id": "q23", "question": "What is Django?", "reference": "Django is a batteries-included Python web framework with ORM, admin and auth.", "source_doc": "Django (web framework)"}
+{"id": "q24", "question": "What is SQLAlchemy?", "reference": "SQLAlchemy is Python's SQL toolkit and ORM for database access.", "source_doc": "SQLAlchemy"}
+{"id": "q25", "question": "What is Pydantic for?", "reference": "Pydantic validates data using Python type annotations; FastAPI uses it for request models.", "source_doc": "Pydantic"}
+{"id": "q26", "question": "What is Uvicorn?", "reference": "Uvicorn is an ASGI server commonly used to run FastAPI and Starlette apps.", "source_doc": "Uvicorn"}
+{"id": "q27", "question": "What is Starlette?", "reference": "Starlette is a lightweight ASGI framework that FastAPI is built on.", "source_doc": "Starlette"}
+{"id": "q28", "question": "What is the Requests library?", "reference": "Requests is a Python HTTP library for sending requests simply.", "source_doc": "Requests (software)"}
+{"id": "q29", "question": "What is HTTP?", "reference": "HTTP is the application protocol for distributed hypermedia communication on the web.", "source_doc": "Hypertext Transfer Protocol"}
+{"id": "q30", "question": "What is REST?", "reference": "REST is an architectural style using stateless client-server requests over HTTP verbs.", "source_doc": "Representational state transfer"}
+{"id": "q31", "question": "What is JSON?", "reference": "JSON is a lightweight text data-interchange format with objects and arrays.", "source_doc": "JSON"}
+{"id": "q32", "question": "What is a WebSocket?", "reference": "WebSocket provides full-duplex communication over a single TCP connection.", "source_doc": "WebSocket"}
+{"id": "q33", "question": "What is Docker?", "reference": "Docker packages apps into containers sharing the host kernel for portable deployment.", "source_doc": "Docker (software)"}
+{"id": "q34", "question": "What is Kubernetes?", "reference": "Kubernetes orchestrates containers across clusters with scheduling and scaling.", "source_doc": "Kubernetes"}
+{"id": "q35", "question": "What is PostgreSQL?", "reference": "PostgreSQL is an advanced open-source relational database.", "source_doc": "PostgreSQL"}
+{"id": "q36", "question": "What is SQLite?", "reference": "SQLite is a serverless embedded relational database stored in a single file.", "source_doc": "SQLite"}
+{"id": "q37", "question": "What is Redis?", "reference": "Redis is an in-memory data store used as cache, queue and database.", "source_doc": "Redis"}
+{"id": "q38", "question": "What is a vector database?", "reference": "A vector database stores embeddings and supports similarity search for RAG.", "source_doc": "Vector database"}
+{"id": "q39", "question": "What is an embedding in ML?", "reference": "An embedding is a dense vector representing text or items for similarity.", "source_doc": "Embedding"}
+{"id": "q40", "question": "What is a Transformer?", "reference": "The Transformer is a neural architecture based on self-attention underlying modern LLMs.", "source_doc": "Transformer (deep learning architecture)"}
+{"id": "q41", "question": "What is a large language model?", "reference": "An LLM is a large neural network trained on text that generates language.", "source_doc": "Large language model"}
+{"id": "q42", "question": "What is retrieval-augmented generation?", "reference": "RAG retrieves relevant documents and conditions LLM generation on them with citations.", "source_doc": "Retrieval-augmented generation"}
+{"id": "q43", "question": "What is prompt engineering?", "reference": "Prompt engineering designs inputs to steer LLM behavior without retraining.", "source_doc": "Prompt engineering"}
+{"id": "q44", "question": "What is fine-tuning?", "reference": "Fine-tuning continues training a model on task data to specialize it.", "source_doc": "Fine-tuning (deep learning)"}
+{"id": "q45", "question": "What is the GIL in Python?", "reference": "The GIL is a lock in CPython limiting true multi-threaded bytecode execution.", "source_doc": "Global interpreter lock"}
+{"id": "q46", "question": "What is pytest?", "reference": "pytest is a Python testing framework with simple asserts and fixtures.", "source_doc": "pytest"}
+{"id": "q47", "question": "What is Git?", "reference": "Git is a distributed version control system tracking code history.", "source_doc": "Git"}
+{"id": "q48", "question": "What is GitHub?", "reference": "GitHub hosts Git repositories with pull requests, issues and CI.", "source_doc": "GitHub"}
+{"id": "q49", "question": "What is asyncio?", "reference": "asyncio is Python's library for async I/O with event loops and coroutines.", "source_doc": "Asyncio"}
+{"id": "q50", "question": "What is an API?", "reference": "An API is a contract letting software components communicate.", "source_doc": "Application programming interface"}

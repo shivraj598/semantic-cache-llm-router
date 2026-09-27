@@ -1,0 +1,37 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+pip-wheel-metadata/
+
+# Env / secrets (never commit keys)
+.env
+.env.*
+
+# Data / local state
+qdrant_data/
+*.db
+*.sqlite
+*.sqlite3
+data/
+eval/results/*.csv
+!eval/results/.gitkeep
+
+# Models / caches
+~/.cache/
+.huggingface/
+*.pt
+*.bin
+
+# Streamlit / notebooks
+.streamlit/secrets.toml
+.ipynb_checkpoints/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
+
+# Docker
+postgres_data/

@@ -1,0 +1,22 @@
+# Phase 0 baseline: FastAPI + Qdrant + embeddings + LiteLLM + Postgres logging
+fastapi
+uvicorn[standard]
+qdrant-client
+sentence-transformers
+litellm
+psycopg[binary]
+sqlalchemy
+python-dotenv
+pydantic
+httpx
+numpy
+
+# Phase 1-2: threshold sweep / router metrics
+scikit-learn
+
+# Phase 3: dashboard + analysis
+pandas
+streamlit
+
+# Dev / eval
+pytest

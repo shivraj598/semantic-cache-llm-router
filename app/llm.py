@@ -57,7 +57,7 @@ def generate(context_blocks: list[str], query: str, model: str) -> dict:
             import time
             time.sleep(2 ** attempt)
     log.warning("LLM call failed, extractive fallback: %s", last_err)
-        top = context_blocks[0] if context_blocks else "I don't know."
-        text = f"Based on the retrieved context: {top[:800]} [1]"
-        return {"answer": text, "input_tokens": in_tokens,
-                "output_tokens": _estimate_tokens(text), "source": "extractive_fallback"}
+    top = context_blocks[0] if context_blocks else "I don't know."
+    text = f"Based on the retrieved context: {top[:800]} [1]"
+    return {"answer": text, "input_tokens": in_tokens,
+            "output_tokens": _estimate_tokens(text), "source": "extractive_fallback"}

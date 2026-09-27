@@ -36,7 +36,7 @@ def llm_judge(question: str, reference: str, answer: str) -> float | None:
     try:
         import litellm
         from app import config
-        if not config.OPENAI_API_KEY and not config.OPENAI_BASE_URL:
+        if not config.api_key_for(config.MODEL_SMALL):
             return None
         kwargs: dict = {
             "model": config.MODEL_SMALL,
@@ -45,10 +45,10 @@ def llm_judge(question: str, reference: str, answer: str) -> float | None:
                 "content": ("Rate answer correctness 0..1 (number only).\n"
                             f"Q: {question}\nReference: {reference}\nAnswer: {answer}")}],
         }
-        if config.OPENAI_BASE_URL:
-            kwargs["api_base"] = config.OPENAI_BASE_URL
-        if config.OPENAI_API_KEY:
-            kwargs["api_key"] = config.OPENAI_API_KEY
+        kwargs.update(config.extra_kwargs_for(config.MODEL_SMALL))
+        key = config.api_key_for(config.MODEL_SMALL)
+        if key:
+            kwargs["api_key"] = key
         out = litellm.completion(**kwargs)["choices"][0]["message"]["content"].strip()
         m = re.search(r"0?\.\d+|\b[01]\b", out)
         return max(0.0, min(1.0, float(m.group()))) if m else None

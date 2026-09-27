@@ -35,10 +35,10 @@ def generate(context_blocks: list[str], query: str, model: str) -> dict:
             {"role": "system", "content": SYSTEM},
             {"role": "user", "content": prompt},
         ]}
-        if config.OPENAI_BASE_URL:
-            kwargs["api_base"] = config.OPENAI_BASE_URL
-        if config.OPENAI_API_KEY:
-            kwargs["api_key"] = config.OPENAI_API_KEY
+        kwargs.update(config.extra_kwargs_for(model))
+        key = config.api_key_for(model)
+        if key:
+            kwargs["api_key"] = key
         resp = litellm.completion(**kwargs)
         text = resp["choices"][0]["message"]["content"] or ""
         try:

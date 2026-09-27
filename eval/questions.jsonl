@@ -26,7 +26,7 @@
 {"id": "q26", "question": "What is Uvicorn?", "reference": "Uvicorn is an ASGI server commonly used to run FastAPI and Starlette apps.", "source_doc": "Uvicorn"}
 {"id": "q27", "question": "What is Starlette?", "reference": "Starlette is a lightweight ASGI framework that FastAPI is built on.", "source_doc": "Starlette"}
 {"id": "q28", "question": "What is the Requests library?", "reference": "Requests is a Python HTTP library for sending requests simply.", "source_doc": "Requests (software)"}
-{"id": "q29", "question": "What is HTTP?", "reference": "HTTP is the application protocol for distributed hypermedia communication on the web.", "source_doc": "Hypertext Transfer Protocol"}
+{"id": "q29", "question": "What is HTTP?", "reference": "HTTP is the application protocol for distributed hypermedia communication on the web.", "source_doc": "HTTP"}
 {"id": "q30", "question": "What is REST?", "reference": "REST is an architectural style using stateless client-server requests over HTTP verbs.", "source_doc": "Representational state transfer"}
 {"id": "q31", "question": "What is JSON?", "reference": "JSON is a lightweight text data-interchange format with objects and arrays.", "source_doc": "JSON"}
 {"id": "q32", "question": "What is a WebSocket?", "reference": "WebSocket provides full-duplex communication over a single TCP connection.", "source_doc": "WebSocket"}

@@ -26,6 +26,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import re
 import time
 from pathlib import Path
 
@@ -33,12 +34,18 @@ ROOT = Path(__file__).resolve().parent.parent
 AGG_PREFIX = "__agg__"
 
 
+def _num(sid: str) -> str:
+    """Numeric part of an id, so 'q01' matches paraphrase id 'p01'."""
+    return re.sub(r"\D", "", sid)
+
+
 def load_questions(path: Path) -> list[dict]:
     return [json.loads(l) for l in path.read_text().splitlines() if l.strip()]
 
 
 def load_paraphrases(path: Path) -> dict[str, str]:
-    return {p["id"]: p["paraphrase"] for p in load_questions(path)}
+    """Keyed by numeric id ('01'), matched against question ids ('q01')."""
+    return {_num(p["id"]): p["paraphrase"] for p in load_questions(path)}
 
 
 def llm_judge(question: str, reference: str, answer: str,
@@ -114,7 +121,7 @@ def run_arm(arm: str, qs: list[dict], paras: dict[str, str],
     try:
         for q in qs:
             for variant in ("orig", "para"):
-                text = q["question"] if variant == "orig" else paras.get(q["id"], "")
+                text = q["question"] if variant == "orig" else paras.get(_num(q["id"]), "")
                 if not text:
                     continue
                 t0 = time.perf_counter()
@@ -190,6 +197,12 @@ def write_csv(path: Path, rows: list[dict], agg: list[dict]) -> None:
 
 
 def main(out: str = "eval/results/replay.csv", no_llm_judge: bool = False) -> None:
+    # Warm the embedding model + Qdrant outside the timed region so the first
+    # request doesn't pay model-load latency (~6s) inside arm 1.
+    from app.rag import get_client, get_model
+
+    get_model()
+    get_client()
     qs = load_questions(ROOT / "eval" / "questions.jsonl")
     paras = load_paraphrases(ROOT / "eval" / "paraphrases.jsonl")
     rows: list[dict] = []

@@ -1,4 +1,4 @@
-"""Phase-0 RAG + Phase-1 semantic cache: cache lookup -> LARGE model -> store."""
+"""Phase-1 semantic cache + Phase-2 cost-aware routing with escalation."""
 from __future__ import annotations
 
 import time
@@ -6,7 +6,7 @@ import time
 from qdrant_client import QdrantClient
 from sentence_transformers import SentenceTransformer
 
-from app import cache, config
+from app import cache, config, router
 from app.db import init_db, log_request
 from app.llm import generate
 
@@ -49,6 +49,7 @@ def answer(query: str, use_cache: bool = True) -> dict:
                 "sources": hit["sources"],
                 "model": hit["model"],
                 "route": "cache",
+                "escalated": False,
                 "cache_hit": True,
                 "cache_score": hit["score"],
                 "input_tokens": 0,
@@ -65,14 +66,34 @@ def answer(query: str, use_cache: bool = True) -> dict:
             return result
     hits = retrieve(query)
     ctx = [h["text"] for h in hits]
-    gen = generate(ctx, query, model=config.MODEL_LARGE)
+    decision = router.classify(query, hits)
+    escalated = False
+    if decision["route"] == "simple":
+        gen = generate(ctx, query, model=config.MODEL_SMALL)
+        cost = config.price_for(config.MODEL_SMALL, gen["input_tokens"], gen["output_tokens"])
+        route, model = "small", config.MODEL_SMALL
+        if config.ROUTER_ESCALATE and router.is_weak_answer(gen["answer"], hits):
+            gen2 = generate(ctx, query, model=config.MODEL_LARGE)
+            cost += config.price_for(config.MODEL_LARGE, gen2["input_tokens"], gen2["output_tokens"])
+            gen = {
+                "answer": gen2["answer"],
+                "input_tokens": gen["input_tokens"] + gen2["input_tokens"],
+                "output_tokens": gen["output_tokens"] + gen2["output_tokens"],
+                "source": gen2["source"],
+            }
+            route, model, escalated = "small_escalated", config.MODEL_LARGE, True
+    else:
+        gen = generate(ctx, query, model=config.MODEL_LARGE)
+        cost = config.price_for(config.MODEL_LARGE, gen["input_tokens"], gen["output_tokens"])
+        route, model = "large", config.MODEL_LARGE
     latency_ms = (time.perf_counter() - t0) * 1000
-    cost = config.price_for(config.MODEL_LARGE, gen["input_tokens"], gen["output_tokens"])
     result = {
         "answer": gen["answer"],
         "sources": [{"doc_title": h["doc_title"], "score": h["score"]} for h in hits],
-        "model": config.MODEL_LARGE,
-        "route": "baseline",
+        "model": model,
+        "route": route,
+        "escalated": escalated,
+        "route_reasons": decision["reasons"],
         "cache_hit": False,
         "input_tokens": gen["input_tokens"],
         "output_tokens": gen["output_tokens"],
@@ -81,9 +102,9 @@ def answer(query: str, use_cache: bool = True) -> dict:
         "answer_source": gen["source"],
     }
     if gen["source"] != "error":
-        cache.store(query, gen["answer"], result["sources"], config.MODEL_LARGE)
+        cache.store(query, gen["answer"], result["sources"], model)
     init_db()
-    log_request(query=query, model=result["model"], route="baseline",
+    log_request(query=query, model=result["model"], route=route,
                 cache_hit=False, input_tokens=result["input_tokens"],
                 output_tokens=result["output_tokens"], cost_usd=cost,
                 latency_ms=latency_ms, answer=result["answer"][:4000],

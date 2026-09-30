@@ -18,7 +18,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-THRESHOLDS = [round(0.85 + 0.01 * i, 2) for i in range(13)]  # 0.85..0.97
+THRESHOLDS = [round(0.75 + 0.01 * i, 2) for i in range(23)]  # 0.75..0.97
 
 
 def load(path: Path) -> list[dict]:

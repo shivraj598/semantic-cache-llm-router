@@ -65,6 +65,11 @@ CACHE_COLLECTION: str = os.getenv("CACHE_COLLECTION", "semantic_cache")
 CACHE_THRESHOLD: float = float(os.getenv("CACHE_THRESHOLD", "0.93"))
 CACHE_TTL_SECONDS: int = int(os.getenv("CACHE_TTL_SECONDS", str(7 * 24 * 3600)))
 
+# Phase-2 router (rule-based; thresholds validated in Phase-3).
+ROUTER_SIMPLE_MAX_WORDS: int = int(os.getenv("ROUTER_SIMPLE_MAX_WORDS", "15"))
+ROUTER_LOW_SCORE: float = float(os.getenv("ROUTER_LOW_SCORE", "0.40"))
+ROUTER_ESCALATE: bool = os.getenv("ROUTER_ESCALATE", "true").lower() not in ("0", "false", "no")
+
 BASELINE_MODEL_ROLE: str = "large"  # Phase-0 baseline always routes to LARGE
 
 

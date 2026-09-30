@@ -70,6 +70,9 @@ ROUTER_SIMPLE_MAX_WORDS: int = int(os.getenv("ROUTER_SIMPLE_MAX_WORDS", "15"))
 ROUTER_LOW_SCORE: float = float(os.getenv("ROUTER_LOW_SCORE", "0.40"))
 ROUTER_ESCALATE: bool = os.getenv("ROUTER_ESCALATE", "true").lower() not in ("0", "false", "no")
 
+# '' (default) = normal classify; 'small'/'large' pins the route for eval arms.
+FORCE_MODEL: str = os.getenv("FORCE_MODEL", "")
+
 BASELINE_MODEL_ROLE: str = "large"  # Phase-0 baseline always routes to LARGE
 
 

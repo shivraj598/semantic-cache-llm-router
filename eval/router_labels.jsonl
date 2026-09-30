@@ -1,0 +1,100 @@
+{"id": "r01", "query": "What is Python and who created it?", "label": "simple", "source": "eval/q01"}
+{"id": "r02", "query": "What is CPython?", "label": "simple", "source": "eval/q02"}
+{"id": "r03", "query": "How does PyPy differ from CPython?", "label": "complex", "source": "eval/q03"}
+{"id": "r04", "query": "What is Cython used for?", "label": "simple", "source": "eval/q04"}
+{"id": "r05", "query": "What does the Python Software Foundation do?", "label": "simple", "source": "eval/q05"}
+{"id": "r06", "query": "What is PyPI?", "label": "simple", "source": "eval/q06"}
+{"id": "r07", "query": "What does pip do?", "label": "simple", "source": "eval/q07"}
+{"id": "r08", "query": "What is IPython?", "label": "simple", "source": "eval/q08"}
+{"id": "r09", "query": "What is Conda?", "label": "simple", "source": "eval/q09"}
+{"id": "r10", "query": "What is a Jupyter Notebook?", "label": "simple", "source": "eval/q10"}
+{"id": "r11", "query": "What is NumPy used for?", "label": "simple", "source": "eval/q11"}
+{"id": "r12", "query": "What does pandas provide?", "label": "simple", "source": "eval/q12"}
+{"id": "r13", "query": "What is SciPy?", "label": "simple", "source": "eval/q13"}
+{"id": "r14", "query": "What is scikit-learn?", "label": "simple", "source": "eval/q14"}
+{"id": "r15", "query": "What is Matplotlib?", "label": "simple", "source": "eval/q15"}
+{"id": "r16", "query": "What is TensorFlow?", "label": "simple", "source": "eval/q16"}
+{"id": "r17", "query": "What is PyTorch?", "label": "simple", "source": "eval/q17"}
+{"id": "r18", "query": "What is Keras?", "label": "simple", "source": "eval/q18"}
+{"id": "r19", "query": "What is OpenCV used for?", "label": "simple", "source": "eval/q19"}
+{"id": "r20", "query": "What is NLTK?", "label": "simple", "source": "eval/q20"}
+{"id": "r21", "query": "What is FastAPI?", "label": "simple", "source": "eval/q21"}
+{"id": "r22", "query": "What is Flask?", "label": "simple", "source": "eval/q22"}
+{"id": "r23", "query": "What is Django?", "label": "simple", "source": "eval/q23"}
+{"id": "r24", "query": "What is SQLAlchemy?", "label": "simple", "source": "eval/q24"}
+{"id": "r25", "query": "What is Mypy?", "label": "simple", "source": "eval/q25"}
+{"id": "r26", "query": "What is Uvicorn?", "label": "simple", "source": "eval/q26"}
+{"id": "r27", "query": "What is Starlette?", "label": "simple", "source": "eval/q27"}
+{"id": "r28", "query": "What is the Requests library?", "label": "simple", "source": "eval/q28"}
+{"id": "r29", "query": "What is HTTP?", "label": "simple", "source": "eval/q29"}
+{"id": "r30", "query": "What is REST?", "label": "simple", "source": "eval/q30"}
+{"id": "r31", "query": "What is JSON?", "label": "simple", "source": "eval/q31"}
+{"id": "r32", "query": "What is a WebSocket?", "label": "simple", "source": "eval/q32"}
+{"id": "r33", "query": "What is Docker?", "label": "simple", "source": "eval/q33"}
+{"id": "r34", "query": "What is Kubernetes?", "label": "simple", "source": "eval/q34"}
+{"id": "r35", "query": "What is PostgreSQL?", "label": "simple", "source": "eval/q35"}
+{"id": "r36", "query": "What is SQLite?", "label": "simple", "source": "eval/q36"}
+{"id": "r37", "query": "What is Redis?", "label": "simple", "source": "eval/q37"}
+{"id": "r38", "query": "What is a vector database?", "label": "simple", "source": "eval/q38"}
+{"id": "r39", "query": "What is an embedding in ML?", "label": "simple", "source": "eval/q39"}
+{"id": "r40", "query": "What is a Transformer?", "label": "simple", "source": "eval/q40"}
+{"id": "r41", "query": "What is a large language model?", "label": "simple", "source": "eval/q41"}
+{"id": "r42", "query": "What is retrieval-augmented generation?", "label": "simple", "source": "eval/q42"}
+{"id": "r43", "query": "What is prompt engineering?", "label": "simple", "source": "eval/q43"}
+{"id": "r44", "query": "What is fine-tuning?", "label": "simple", "source": "eval/q44"}
+{"id": "r45", "query": "What is the GIL in Python?", "label": "simple", "source": "eval/q45"}
+{"id": "r46", "query": "What is pytest?", "label": "simple", "source": "eval/q46"}
+{"id": "r47", "query": "What is Git?", "label": "simple", "source": "eval/q47"}
+{"id": "r48", "query": "What is GitHub?", "label": "simple", "source": "eval/q48"}
+{"id": "r49", "query": "What is a coroutine?", "label": "simple", "source": "eval/q49"}
+{"id": "r50", "query": "What is an API?", "label": "simple", "source": "eval/q50"}
+{"id": "r51", "query": "Compare Django and Flask for building a REST API", "label": "complex", "source": "handwritten"}
+{"id": "r52", "query": "Why is CPython slow for numerical code?", "label": "complex", "source": "handwritten"}
+{"id": "r53", "query": "Explain how the Python GIL affects multithreading", "label": "complex", "source": "handwritten"}
+{"id": "r54", "query": "What are the trade-offs between PostgreSQL and SQLite?", "label": "complex", "source": "handwritten"}
+{"id": "r55", "query": "How do I install pandas with pip?", "label": "simple", "source": "handwritten"}
+{"id": "r56", "query": "What is the difference between Git and GitHub?", "label": "complex", "source": "handwritten"}
+{"id": "r57", "query": "How do I write a Dockerfile for a FastAPI app?", "label": "simple", "source": "handwritten"}
+{"id": "r58", "query": "Evaluate whether Redis or PostgreSQL fits a session store", "label": "complex", "source": "handwritten"}
+{"id": "r59", "query": "What port does Uvicorn use by default?", "label": "simple", "source": "handwritten"}
+{"id": "r60", "query": "Contrast TensorFlow and PyTorch for research versus production deployment needs", "label": "complex", "source": "handwritten"}
+{"id": "r61", "query": "How do I parse JSON in Python?", "label": "simple", "source": "handwritten"}
+{"id": "r62", "query": "Why does my Docker container exit immediately and how do I debug it?", "label": "complex", "source": "handwritten"}
+{"id": "r63", "query": "What is list comprehension?", "label": "simple", "source": "handwritten"}
+{"id": "r64", "query": "Explain the difference between processes, threads and coroutines in Python", "label": "complex", "source": "handwritten"}
+{"id": "r65", "query": "How do I create a virtual environment?", "label": "simple", "source": "handwritten"}
+{"id": "r66", "query": "Compare pip and Conda for managing data science environments", "label": "complex", "source": "handwritten"}
+{"id": "r67", "query": "What does the requests get method return?", "label": "simple", "source": "handwritten"}
+{"id": "r68", "query": "Analyze the pros and cons of microservices versus a monolith for a small team", "label": "complex", "source": "handwritten"}
+{"id": "r69", "query": "How do I run pytest on a single file?", "label": "simple", "source": "handwritten"}
+{"id": "r70", "query": "Why should I use type hints and Mypy in a large codebase?", "label": "complex", "source": "handwritten"}
+{"id": "r71", "query": "What is a Python decorator?", "label": "simple", "source": "handwritten"}
+{"id": "r72", "query": "Design a caching strategy for a FastAPI service backed by PostgreSQL and Redis", "label": "complex", "source": "handwritten"}
+{"id": "r73", "query": "How do I set a TTL on a Redis key?", "label": "simple", "source": "handwritten"}
+{"id": "r74", "query": "Explain why PyPy is faster than CPython for long-running programs", "label": "complex", "source": "handwritten"}
+{"id": "r75", "query": "What is the latest Python version?", "label": "simple", "source": "handwritten"}
+{"id": "r76", "query": "How do WebSockets differ from HTTP polling and when should I use each?", "label": "complex", "source": "handwritten"}
+{"id": "r77", "query": "How do I clone a Git repository?", "label": "simple", "source": "handwritten"}
+{"id": "r78", "query": "What are the pros and cons of fine-tuning versus prompt engineering?", "label": "complex", "source": "handwritten"}
+{"id": "r79", "query": "How do I define a SQLAlchemy model?", "label": "simple", "source": "handwritten"}
+{"id": "r80", "query": "Why does my Kubernetes pod stay in Pending and how do I fix it?", "label": "complex", "source": "handwritten"}
+{"id": "r81", "query": "What is a requirements.txt file?", "label": "simple", "source": "handwritten"}
+{"id": "r82", "query": "Compare REST and WebSockets for a live dashboard with code examples", "label": "complex", "source": "handwritten"}
+{"id": "r83", "query": "How do I read a CSV with pandas?", "label": "simple", "source": "handwritten"}
+{"id": "r84", "query": "Explain how retrieval-augmented generation reduces hallucinations", "label": "complex", "source": "handwritten"}
+{"id": "r85", "query": "What is the Matplotlib pyplot interface?", "label": "simple", "source": "handwritten"}
+{"id": "r86", "query": "How do I migrate a Flask app to FastAPI without downtime?", "label": "complex", "source": "handwritten"}
+{"id": "r87", "query": "What is SQLite used for?", "label": "simple", "source": "handwritten"}
+{"id": "r88", "query": "Why do I get a CORS error calling my API and how do I resolve it?", "label": "complex", "source": "handwritten"}
+{"id": "r89", "query": "How do I check my Python version?", "label": "simple", "source": "handwritten"}
+{"id": "r90", "query": "Contrast unit tests and integration tests and explain when to write each", "label": "complex", "source": "handwritten"}
+{"id": "r91", "query": "What is OpenCV?", "label": "simple", "source": "handwritten"}
+{"id": "r92", "query": "How do I optimize a slow pandas groupby on a large dataset?", "label": "complex", "source": "handwritten"}
+{"id": "r93", "query": "What is Starlette?", "label": "simple", "source": "handwritten"}
+{"id": "r94", "query": "Debug why my pytest suite hangs after adding async tests", "label": "complex", "source": "handwritten"}
+{"id": "r95", "query": "How do I install a package from PyPI?", "label": "simple", "source": "handwritten"}
+{"id": "r96", "query": "Explain the attention mechanism and why Transformers replaced RNNs", "label": "complex", "source": "handwritten"}
+{"id": "r97", "query": "What license is Python released under?", "label": "simple", "source": "handwritten"}
+{"id": "r98", "query": "What is CI and how do I set it up for a Python project on GitHub?", "label": "complex", "source": "handwritten"}
+{"id": "r99", "query": "How do I format code with Black?", "label": "simple", "source": "handwritten"}
+{"id": "r100", "query": "How do I choose between NumPy, pandas and PyTorch for array work?", "label": "complex", "source": "handwritten"}

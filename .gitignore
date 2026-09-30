@@ -1,2 +1,4 @@
 # Created by venv; see https://docs.python.org/3/library/venv.html
 *
+# Local-only phase tracker (never commit)
+PROJECT_PHASES.md

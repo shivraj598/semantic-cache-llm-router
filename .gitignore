@@ -1,4 +1,49 @@
-# Created by venv; see https://docs.python.org/3/library/venv.html
-*
 # Local-only phase tracker (never commit)
 PROJECT_PHASES.md
+
+# Secrets / local env (never commit)
+.env
+*.pem
+*.key
+
+# Python bytecode / caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual envs. NOTE: a venv spilled into the repo root (bin/ lib/ include/
+# pyvenv.cfg alongside .venv/). Preferred fix: `rm -rf bin lib include pyvenv.cfg`
+# and use .venv/ only. Until then these patterns keep venv binaries untracked.
+.venv/
+venv/
+ENV/
+.env/
+.pyvenv/
+pyvenv.cfg
+/bin/
+/lib/
+/include/
+
+# Vector DB + generated eval output (rebuild via `python -m app.ingest` / `python -m eval.run`)
+qdrant_data/
+eval/results/
+
+# Local Postgres bind-mount (if ever used instead of the named volume)
+postgres_data/
+
+# Streamlit / perf artifacts
+.streamlit/
+*.heapsnapshot
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/

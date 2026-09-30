@@ -22,10 +22,12 @@ query
   stored answer without any LLM call. Entries carry a `corpus_version` (bumped
   on re-ingest) plus a TTL, so stale answers never outlive their data. Errors,
   empty answers, and user-specific answers are never cached.
-- **Threshold tuning**: the similarity threshold (swept 0.85–0.97) is picked on
-  50 paraphrase pairs that must hit ("how do I reset my password" /
-  "password reset steps") and 50 near-miss pairs that must not
-  ("refund policy in the EU" / "refund policy in the US") — zero false hits.
+- **Threshold tuning**: swept 0.75–0.97 on 50 paraphrase pairs that must hit
+  ("how do I reset my password" / "password reset steps") and 50 near-miss
+  pairs that must not ("refund policy in the EU" / "refund policy in the US"):
+  **0.81** gives 0.72 recall with zero false hits (`eval/threshold_sweep.py`).
+  Known blind spot: acronym expansion ("GIL" / "Global Interpreter Lock")
+  scores ~0.33 on MiniLM and still misses.
 - **Router**: rule-based signals (query length, entities, words like
   compare/why/explain, retrieval score spread), validated against 100
   hand-labeled queries, compared with a tiny LLM classifier on cost vs accuracy.

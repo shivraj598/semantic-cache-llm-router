@@ -1,0 +1,50 @@
+{"id": "p01", "original": "What is Python and who created it?", "paraphrase": "Who invented Python, and what kind of language is it?"}
+{"id": "p02", "original": "What is CPython?", "paraphrase": "Can you explain what CPython is?"}
+{"id": "p03", "original": "How does PyPy differ from CPython?", "paraphrase": "What is the difference between PyPy and CPython?"}
+{"id": "p04", "original": "What is Cython used for?", "paraphrase": "What do people use Cython for?"}
+{"id": "p05", "original": "What does the Python Software Foundation do?", "paraphrase": "What is the role of the Python Software Foundation?"}
+{"id": "p06", "original": "What is PyPI?", "paraphrase": "Tell me what the Python Package Index (PyPI) is."}
+{"id": "p07", "original": "What does pip do?", "paraphrase": "What is the pip tool used for?"}
+{"id": "p08", "original": "What is IPython?", "paraphrase": "Describe IPython for me."}
+{"id": "p09", "original": "What is Conda?", "paraphrase": "What is the Conda package manager?"}
+{"id": "p10", "original": "What is a Jupyter Notebook?", "paraphrase": "What are Jupyter Notebooks?"}
+{"id": "p11", "original": "What is NumPy used for?", "paraphrase": "What can you do with NumPy?"}
+{"id": "p12", "original": "What does pandas provide?", "paraphrase": "What functionality does the pandas library offer?"}
+{"id": "p13", "original": "What is SciPy?", "paraphrase": "Explain what SciPy is."}
+{"id": "p14", "original": "What is scikit-learn?", "paraphrase": "What is the scikit-learn library?"}
+{"id": "p15", "original": "What is Matplotlib?", "paraphrase": "What do you use Matplotlib for?"}
+{"id": "p16", "original": "What is TensorFlow?", "paraphrase": "Describe Google's TensorFlow framework."}
+{"id": "p17", "original": "What is PyTorch?", "paraphrase": "Tell me about the PyTorch framework."}
+{"id": "p18", "original": "What is Keras?", "paraphrase": "What is the Keras API?"}
+{"id": "p19", "original": "What is OpenCV used for?", "paraphrase": "What is OpenCV for?"}
+{"id": "p20", "original": "What is NLTK?", "paraphrase": "What does NLTK stand for and what is it?"}
+{"id": "p21", "original": "What is FastAPI?", "paraphrase": "Can you describe the FastAPI framework?"}
+{"id": "p22", "original": "What is Flask?", "paraphrase": "Tell me what Flask is."}
+{"id": "p23", "original": "What is Django?", "paraphrase": "Describe the Django web framework."}
+{"id": "p24", "original": "What is SQLAlchemy?", "paraphrase": "What is SQLAlchemy used for?"}
+{"id": "p25", "original": "What is Mypy?", "paraphrase": "What does the Mypy tool do?"}
+{"id": "p26", "original": "What is Uvicorn?", "paraphrase": "Explain what Uvicorn is."}
+{"id": "p27", "original": "What is Starlette?", "paraphrase": "What is the Starlette framework?"}
+{"id": "p28", "original": "What is the Requests library?", "paraphrase": "What do you use Python Requests for?"}
+{"id": "p29", "original": "What is HTTP?", "paraphrase": "Explain the HTTP protocol."}
+{"id": "p30", "original": "What is REST?", "paraphrase": "What does REST mean in APIs?"}
+{"id": "p31", "original": "What is JSON?", "paraphrase": "Describe the JSON format."}
+{"id": "p32", "original": "What is a WebSocket?", "paraphrase": "How do WebSockets work?"}
+{"id": "p33", "original": "What is Docker?", "paraphrase": "What is Docker used for?"}
+{"id": "p34", "original": "What is Kubernetes?", "paraphrase": "Tell me what Kubernetes does."}
+{"id": "p35", "original": "What is PostgreSQL?", "paraphrase": "Describe the PostgreSQL database."}
+{"id": "p36", "original": "What is SQLite?", "paraphrase": "What is the SQLite database?"}
+{"id": "p37", "original": "What is Redis?", "paraphrase": "What do people use Redis for?"}
+{"id": "p38", "original": "What is a vector database?", "paraphrase": "Explain what vector databases are."}
+{"id": "p39", "original": "What is an embedding in ML?", "paraphrase": "What does embedding mean in machine learning?"}
+{"id": "p40", "original": "What is a Transformer?", "paraphrase": "Describe the Transformer architecture."}
+{"id": "p41", "original": "What is a large language model?", "paraphrase": "What are large language models?"}
+{"id": "p42", "original": "What is retrieval-augmented generation?", "paraphrase": "Explain retrieval-augmented generation (RAG)."}
+{"id": "p43", "original": "What is prompt engineering?", "paraphrase": "What does prompt engineering involve?"}
+{"id": "p44", "original": "What is fine-tuning?", "paraphrase": "What is fine-tuning in deep learning?"}
+{"id": "p45", "original": "What is the GIL in Python?", "paraphrase": "Explain Python's Global Interpreter Lock."}
+{"id": "p46", "original": "What is pytest?", "paraphrase": "What is the pytest framework for?"}
+{"id": "p47", "original": "What is Git?", "paraphrase": "Describe the Git version control system."}
+{"id": "p48", "original": "What is GitHub?", "paraphrase": "What is GitHub used for?"}
+{"id": "p49", "original": "What is a coroutine?", "paraphrase": "Explain what coroutines are."}
+{"id": "p50", "original": "What is an API?", "paraphrase": "What does API mean?"}

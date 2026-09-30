@@ -60,6 +60,11 @@ DATABASE_URL: str = os.getenv(
     "DATABASE_URL", "postgresql+psycopg://rag:rag@localhost:5432/raglogs"
 )
 
+# Phase-1 semantic cache. Threshold tuned in Phase-3 sweep (0.85-0.97).
+CACHE_COLLECTION: str = os.getenv("CACHE_COLLECTION", "semantic_cache")
+CACHE_THRESHOLD: float = float(os.getenv("CACHE_THRESHOLD", "0.93"))
+CACHE_TTL_SECONDS: int = int(os.getenv("CACHE_TTL_SECONDS", str(7 * 24 * 3600)))
+
 BASELINE_MODEL_ROLE: str = "large"  # Phase-0 baseline always routes to LARGE
 
 

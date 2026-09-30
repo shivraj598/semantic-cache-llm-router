@@ -32,7 +32,18 @@ def _words(query: str) -> list[str]:
 
 
 def classify(query: str, hits: list[dict] | None = None) -> dict:
-    """Return {route, complexity, reasons}. route is 'simple' or 'complex'."""
+    """Return {route, complexity, reasons}. route is 'simple' or 'complex'.
+
+    FORCE_MODEL env override ('small' | 'large') pins the route — used by
+    eval arms (e.g. always-large replay); default '' means normal classify.
+    """
+    # Lazy import so router never creates an import cycle with config consumers.
+    from app import config
+
+    force = getattr(config, "FORCE_MODEL", "")
+    if force in ("small", "large"):
+        return {"route": force, "complexity": -1, "reasons": [f"FORCE_MODEL={force}"]}
+
     hits = hits or []
     words = _words(query)
     reasons: list[str] = []
@@ -42,9 +53,6 @@ def classify(query: str, hits: list[dict] | None = None) -> dict:
         found = sorted(COMPLEX_WORDS & set(words))
         complexity += 2
         reasons.append(f"trigger words: {', '.join(found)}")
-
-    # Lazy import so router never creates an import cycle with config consumers.
-    from app import config
 
     if len(words) > config.ROUTER_SIMPLE_MAX_WORDS:
         complexity += 1

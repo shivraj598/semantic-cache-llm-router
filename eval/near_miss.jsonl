@@ -1,0 +1,50 @@
+{"id": "n01", "query_a": "What does pip do?", "query_b": "What is PyPI?"}
+{"id": "n02", "query_a": "What is PyPy?", "query_b": "What is CPython?"}
+{"id": "n03", "query_a": "What is Cython used for?", "query_b": "What is CPython?"}
+{"id": "n04", "query_a": "What is Flask?", "query_b": "What is Django?"}
+{"id": "n05", "query_a": "What is FastAPI?", "query_b": "What is Flask?"}
+{"id": "n06", "query_a": "What is Uvicorn?", "query_b": "What is Starlette?"}
+{"id": "n07", "query_a": "What is TensorFlow?", "query_b": "What is PyTorch?"}
+{"id": "n08", "query_a": "What is Keras?", "query_b": "What is TensorFlow?"}
+{"id": "n09", "query_a": "What is NumPy used for?", "query_b": "What is SciPy?"}
+{"id": "n10", "query_a": "What does pandas provide?", "query_b": "What is NumPy used for?"}
+{"id": "n11", "query_a": "What is PostgreSQL?", "query_b": "What is SQLite?"}
+{"id": "n12", "query_a": "What is Redis?", "query_b": "What is PostgreSQL?"}
+{"id": "n13", "query_a": "What is Git?", "query_b": "What is GitHub?"}
+{"id": "n14", "query_a": "What is HTTP?", "query_b": "What is REST?"}
+{"id": "n15", "query_a": "What is JSON?", "query_b": "What is a WebSocket?"}
+{"id": "n16", "query_a": "What is Docker?", "query_b": "What is Kubernetes?"}
+{"id": "n17", "query_a": "What is a vector database?", "query_b": "What is an embedding in ML?"}
+{"id": "n18", "query_a": "What is a Transformer?", "query_b": "What is a large language model?"}
+{"id": "n19", "query_a": "What is prompt engineering?", "query_b": "What is fine-tuning?"}
+{"id": "n20", "query_a": "What is retrieval-augmented generation?", "query_b": "What is prompt engineering?"}
+{"id": "n21", "query_a": "What is IPython?", "query_b": "What is a Jupyter Notebook?"}
+{"id": "n22", "query_a": "What is Conda?", "query_b": "What does pip do?"}
+{"id": "n23", "query_a": "What is Matplotlib?", "query_b": "What is OpenCV used for?"}
+{"id": "n24", "query_a": "What is NLTK?", "query_b": "What is scikit-learn?"}
+{"id": "n25", "query_a": "What is Mypy?", "query_b": "What is pytest?"}
+{"id": "n26", "query_a": "What is SQLAlchemy?", "query_b": "What is Django?"}
+{"id": "n27", "query_a": "What is the Requests library?", "query_b": "What is HTTP?"}
+{"id": "n28", "query_a": "What is a coroutine?", "query_b": "What is the GIL in Python?"}
+{"id": "n29", "query_a": "What is an API?", "query_b": "What is REST?"}
+{"id": "n30", "query_a": "What does the Python Software Foundation do?", "query_b": "What is Python and who created it?"}
+{"id": "n31", "query_a": "How do I reset my password?", "query_b": "How do I change my username?"}
+{"id": "n32", "query_a": "What is the refund policy in the EU?", "query_b": "What is the refund policy in the US?"}
+{"id": "n33", "query_a": "How does PyPy differ from CPython?", "query_b": "How does Cython differ from CPython?"}
+{"id": "n34", "query_a": "What is Django?", "query_b": "How do I deploy Django with Docker?"}
+{"id": "n35", "query_a": "What is SQLite?", "query_b": "When should I choose PostgreSQL over SQLite?"}
+{"id": "n36", "query_a": "What is Git?", "query_b": "How do I resolve a Git merge conflict?"}
+{"id": "n37", "query_a": "What is JSON?", "query_b": "How do I parse JSON in Python?"}
+{"id": "n38", "query_a": "What is Docker?", "query_b": "How do I write a Dockerfile for FastAPI?"}
+{"id": "n39", "query_a": "What is pytest?", "query_b": "How do I mock a database in pytest?"}
+{"id": "n40", "query_a": "What is Redis?", "query_b": "How do I set a TTL on a Redis key?"}
+{"id": "n41", "query_a": "What is Kubernetes?", "query_b": "What is Docker?"}
+{"id": "n42", "query_a": "What is a WebSocket?", "query_b": "What is HTTP?"}
+{"id": "n43", "query_a": "What is fine-tuning?", "query_b": "What is prompt engineering?"}
+{"id": "n44", "query_a": "What is an embedding in ML?", "query_b": "What is a vector database?"}
+{"id": "n45", "query_a": "What is Starlette?", "query_b": "What is FastAPI?"}
+{"id": "n46", "query_a": "What is Flask?", "query_b": "What is FastAPI?"}
+{"id": "n47", "query_a": "What is SciPy?", "query_b": "What is scikit-learn?"}
+{"id": "n48", "query_a": "What is Keras?", "query_b": "What is PyTorch?"}
+{"id": "n49", "query_a": "What is GitHub?", "query_b": "What is Git?"}
+{"id": "n50", "query_a": "What is REST?", "query_b": "What is an API?"}

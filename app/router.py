@@ -10,7 +10,7 @@ import re
 
 COMPLEX_WORDS = frozenset({
     "compare", "contrast", "versus", "vs", "why", "explain", "analyse",
-    "analyze", "evaluate", "difference", "differences", "tradeoff",
+    "analyze", "evaluate", "difference", "differences", "differ", "differs", "tradeoff",
     "trade-off", "pros", "cons", "design", "architect", "debug",
     "optimize", "optimise", "migrate", "war", "vs.",
 })

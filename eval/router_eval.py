@@ -21,8 +21,10 @@ def load_labels(path: Path) -> list[dict]:
     return [json.loads(l) for l in path.read_text().splitlines() if l.strip()]
 
 
-def llm_classify(query: str) -> tuple[str | None, int, int]:
+def llm_classify(query: str, retries: int = 4) -> tuple[str | None, int, int]:
     """Tiny-LLM classifier via MODEL_SMALL. Returns (label, in_tok, out_tok)."""
+    import time
+
     import litellm
 
     from app import config
@@ -40,13 +42,20 @@ def llm_classify(query: str) -> tuple[str | None, int, int]:
     key = config.api_key_for(config.MODEL_SMALL)
     if key:
         kwargs["api_key"] = key
-    out = litellm.completion(**kwargs)
-    text = out["choices"][0]["message"]["content"].strip().lower()
-    usage = out.get("usage", {}) or {}
-    m = re.search(r"\b(simple|complex)\b", text)
-    return ((m.group(1) if m else None),
-            int(usage.get("prompt_tokens") or 0),
-            int(usage.get("completion_tokens") or 0))
+    last_err: Exception | None = None
+    for attempt in range(retries):
+        try:
+            out = litellm.completion(**kwargs)
+            text = out["choices"][0]["message"]["content"].strip().lower()
+            usage = out.get("usage", {}) or {}
+            m = re.search(r"\b(simple|complex)\b", text)
+            return ((m.group(1) if m else None),
+                    int(usage.get("prompt_tokens") or 0),
+                    int(usage.get("completion_tokens") or 0))
+        except Exception as e:
+            last_err = e
+            time.sleep(2 ** attempt)
+    raise last_err if last_err else RuntimeError("llm_classify failed")
 
 
 def avg_baseline_tokens() -> tuple[int, int]:
@@ -87,8 +96,11 @@ def main(out: str = "eval/results/router_eval.csv", llm_compare: bool = False) -
                 row["llm_correct"] = int(lab == item["label"])
                 llm_ok += row["llm_correct"]
             except Exception as e:
-                row["llm_predicted"] = f"ERROR: {e}"
+                row["llm_predicted"] = f"ERROR: {type(e).__name__}: {str(e)[:80]}"
                 row["llm_correct"] = 0
+            finally:
+                import time as _t
+                _t.sleep(1.0)  # stay under free-tier rate limits
         rows.append(row)
         mark = "ok" if row["correct"] else "MISS"
         print(f"{item['id']} [{mark}] label={item['label']:<7} pred={pred:<7} {item['query'][:60]}")

@@ -47,3 +47,4 @@ postgres_data/
 .DS_Store
 .vscode/
 .idea/
+.freebuff/

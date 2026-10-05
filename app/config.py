@@ -19,34 +19,40 @@ CHUNK_CHARS: int = int(os.getenv("CHUNK_CHARS", "2000"))
 CHUNK_OVERLAP: int = int(os.getenv("CHUNK_OVERLAP", "400"))
 TOP_K: int = int(os.getenv("TOP_K", "5"))
 
-# LiteLLM — OpenAI-compatible (works for OpenAI, Grok/xAI, Ollama cloud).
+# LiteLLM — OpenAI-compatible (works for OpenAI, Grok/xAI, Ollama cloud, NVIDIA NIM).
 # Examples:
 #   OpenAI: MODEL_LARGE=gpt-4o  MODEL_SMALL=gpt-4o-mini  OPENAI_BASE_URL unset
 #   Grok:   MODEL_LARGE=grok-4  MODEL_SMALL=grok-3-mini  OPENAI_BASE_URL=https://api.x.ai/v1
 #   Ollama: MODEL_LARGE=ollama/llama3.1  OPENAI_BASE_URL=https://ollama.com/v1 (or local http://localhost:11434/v1)
+#   NVIDIA NIM: MODEL_LARGE=nvidia/nemotron-3.5-lightning-30b-a3b  NVIDIA_API_KEY=...  NVIDIA_BASE_URL=https://integrate.api.nvidia.com/v1
 MODEL_SMALL: str = os.getenv("MODEL_SMALL", "gpt-4o-mini")
 MODEL_LARGE: str = os.getenv("MODEL_LARGE", "gpt-4o")
 OPENAI_BASE_URL: str | None = os.getenv("OPENAI_BASE_URL") or None
 OPENAI_API_KEY: str | None = os.getenv("OPENAI_API_KEY") or None
 GROQ_API_KEY: str | None = os.getenv("GROQ_API_KEY") or None
+NVIDIA_API_KEY: str | None = os.getenv("NVIDIA_API_KEY") or os.getenv("NVIDIA_NIM_API_KEY") or None
+NVIDIA_BASE_URL: str = os.getenv("NVIDIA_BASE_URL", "https://integrate.api.nvidia.com/v1")
 
 
 def api_key_for(model: str) -> str | None:
     """Pick the right key per provider prefix.
 
-    groq/ models use GROQ_API_KEY; everything else uses OPENAI_API_KEY,
-    falling back to GROQ_API_KEY so the OpenAI-compatible Groq endpoint
-    (OPENAI_BASE_URL=https://api.groq.com/openai/v1) works with one key.
+    groq/ models use GROQ_API_KEY; nvidia/ models use NVIDIA_API_KEY;
+    everything else uses OPENAI_API_KEY, falling back to GROQ_API_KEY.
     """
     if model.startswith("groq/"):
         return GROQ_API_KEY
+    if model.startswith("nvidia/"):
+        return NVIDIA_API_KEY or OPENAI_API_KEY
     return OPENAI_API_KEY or GROQ_API_KEY
 
 
 def extra_kwargs_for(model: str) -> dict:
-    """Provider-specific LiteLLM kwargs (base URL only for generic OpenAI)."""
+    """Provider-specific LiteLLM kwargs."""
     if model.startswith("groq/"):
         return {}
+    if model.startswith("nvidia/"):
+        return {"api_base": NVIDIA_BASE_URL}
     return {"api_base": OPENAI_BASE_URL} if OPENAI_BASE_URL else {}
 
 # Price table USD per 1M tokens (override per provider via env).

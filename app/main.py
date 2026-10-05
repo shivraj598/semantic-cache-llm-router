@@ -1,5 +1,7 @@
-"""FastAPI wrapper for the baseline RAG pipeline."""
+"""FastAPI wrapper for the RAG pipeline."""
 from __future__ import annotations
+
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from pydantic import BaseModel
@@ -7,16 +9,19 @@ from pydantic import BaseModel
 from app.db import init_db
 from app.rag import answer
 
-app = FastAPI(title="semantic-cache-llm-router (phase-0 baseline)")
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_db()
+    yield
+
+
+app = FastAPI(title="semantic-cache-llm-router")
 
 
 class Ask(BaseModel):
     query: str
-
-
-@app.on_event("startup")
-def _startup() -> None:
-    init_db()
+    use_cache: bool = True
 
 
 @app.get("/health")
@@ -26,4 +31,4 @@ def health() -> dict:
 
 @app.post("/answer")
 def answer_route(body: Ask) -> dict:
-    return answer(body.query)
+    return answer(body.query, use_cache=body.use_cache)

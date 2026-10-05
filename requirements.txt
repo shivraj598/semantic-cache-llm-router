@@ -1,23 +1,23 @@
 # Phase 0 baseline: FastAPI + Qdrant + embeddings + LiteLLM + Postgres logging
-fastapi
-uvicorn[standard]
-qdrant-client
-sentence-transformers
-litellm
-groq
-psycopg[binary]
-sqlalchemy
-python-dotenv
-pydantic
-httpx
-numpy
+fastapi>=0.110.0,<1.0.0
+uvicorn[standard]>=0.27.0,<1.0.0
+qdrant-client>=1.7.0,<2.0.0
+sentence-transformers>=2.5.0,<3.0.0
+litellm>=1.33.0,<2.0.0
+groq>=0.4.0,<1.0.0
+psycopg[binary]>=3.1.0,<4.0.0
+sqlalchemy>=2.0.0,<3.0.0
+python-dotenv>=1.0.0,<2.0.0
+pydantic>=2.5.0,<3.0.0
+httpx>=0.26.0,<1.0.0
+numpy>=1.24.0,<2.0.0
 
 # Phase 1-2: threshold sweep / router metrics
-scikit-learn
+scikit-learn>=1.4.0,<2.0.0
 
 # Phase 3: dashboard + analysis
-pandas
-streamlit
+pandas>=2.2.0,<3.0.0
+streamlit>=1.32.0,<2.0.0
 
 # Dev / eval
-pytest
+pytest>=8.0.0,<9.0.0

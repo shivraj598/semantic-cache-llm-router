@@ -1,4 +1,4 @@
-"""Sweep the semantic-cache similarity threshold (0.85-0.97).
+"""Sweep the semantic-cache similarity threshold (0.75-0.97).
 
 Must-hit:  eval/paraphrases.jsonl (paraphrase of a cached query -> hit).
 Must-not: eval/near_miss.jsonl (different meaning despite overlap -> miss).

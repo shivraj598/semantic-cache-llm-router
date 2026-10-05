@@ -41,6 +41,10 @@ def generate(context_blocks: list[str], query: str, model: str) -> dict:
             key = config.api_key_for(model)
             if key:
                 kwargs["api_key"] = key
+            if model.startswith("nvidia/"):
+                kwargs["extra_body"] = kwargs.get("extra_body", {})
+                if "chat_template_kwargs" not in kwargs["extra_body"]:
+                    kwargs["extra_body"]["chat_template_kwargs"] = {"enable_thinking": False}
             resp = litellm.completion(**kwargs)
             text = resp["choices"][0]["message"]["content"] or ""
             try:

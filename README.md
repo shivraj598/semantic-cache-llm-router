@@ -97,8 +97,8 @@ scoring, so ingest, retrieval, and caching work fully offline.
 ## Layout
 
 ```
-app/            FastAPI + RAG pipeline (config, ingest, rag, llm, db, main)
-eval/           questions.jsonl + run.py scorer → results/*.csv
+app/            FastAPI + RAG pipeline + dashboard (config, ingest, rag, llm, db, cache, router, main, dashboard)
+eval/           questions.jsonl + run.py + replay.py + threshold_sweep.py + router_eval.py → results/*.csv
 qdrant_data/    embedded Qdrant vectors (gitignored, rebuild via ingest)
 docker-compose.yml  Postgres for request logs
 ```
@@ -106,5 +106,5 @@ docker-compose.yml  Postgres for request logs
 ## In one line
 
 > Added semantic caching and cost-aware model routing to a RAG service, cutting
-> LLM cost by X% and p95 latency by Y% with no drop in answer quality on a
-> Z-question eval set.
+> LLM cost by 86.3% and p95 latency by 40.5% with +0.016 change in answer quality on a
+> 100-request replay set.

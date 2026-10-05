@@ -83,3 +83,10 @@ Avg tokens per answer: 1708 in / 218 out. Embeddings: `all-MiniLM-L6-v2` (384-di
 - Router savings are projected from route split, not measured live traffic.
 - Judge quality is an LLM score (gpt-oss-20b), not human rating.
 - Groq free-tier rate limits bit during evals (retries + 1s pacing added).
+
+
+## In one line
+
+> Added semantic caching and cost-aware model routing to a RAG service, cutting
+> LLM cost by 86.3% and p95 latency by 40.5% with +0.016 change in answer quality on a
+> 100-request replay set.

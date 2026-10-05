@@ -66,7 +66,7 @@ DATABASE_URL: str = os.getenv(
     "DATABASE_URL", "postgresql+psycopg://rag:rag@localhost:5432/raglogs"
 )
 
-# Phase-1 semantic cache. Threshold tuned in Phase-3 sweep (0.85-0.97).
+# Phase-1 semantic cache. Threshold tuned in Phase-3 sweep (0.75-0.97).
 CACHE_COLLECTION: str = os.getenv("CACHE_COLLECTION", "semantic_cache")
 CACHE_THRESHOLD: float = float(os.getenv("CACHE_THRESHOLD", "0.81"))
 CACHE_TTL_SECONDS: int = int(os.getenv("CACHE_TTL_SECONDS", str(7 * 24 * 3600)))
@@ -79,7 +79,7 @@ ROUTER_ESCALATE: bool = os.getenv("ROUTER_ESCALATE", "true").lower() not in ("0"
 # '' (default) = normal classify; 'small'/'large' pins the route for eval arms.
 FORCE_MODEL: str = os.getenv("FORCE_MODEL", "")
 
-BASELINE_MODEL_ROLE: str = "large"  # Phase-0 baseline always routes to LARGE
+
 
 
 def price_for(model: str, in_tokens: int, out_tokens: int) -> float:
